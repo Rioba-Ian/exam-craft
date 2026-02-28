@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(npm install:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm add:*)",
+      "Bash(timeout 10 pnpm dev:*)",
+      "mcp__ide__getDiagnostics",
+      "WebFetch(domain:github.com)",
+      "Bash(timeout 15 pnpm dev:*)",
+      "Bash(timeout 12 pnpm dev:*)"
+    ]
+  }
+}
