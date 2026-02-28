@@ -1,0 +1,355 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&family=Inconsolata:wght@400;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./components/ui/utils.css";
+
+@layer base {
+ *,
+ *::before,
+ *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+ }
+}
+
+:root {
+ --forest: #1b4d35;
+ --forest2: #246344;
+ --leaf: #3a8c5c;
+ --mint: #d6ede2;
+ --sienna: #c4622d;
+ --sienna2: #e07040;
+ --amber: #e8a020;
+ --paper: #f9f4ea;
+ --paper2: #f2ebd9;
+ --ink: #1a1710;
+ --ink2: #3d3830;
+ --muted: #8a8070;
+ --line: rgba(26, 23, 16, 0.1);
+ --white: #ffffff;
+ --blue: #2563a8;
+ --red: #c0392b;
+ --sidebar-w: 256px;
+ --radius: 14px;
+ --shadow: 0 4px 24px rgba(0, 0, 0, 0.09);
+ --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.14);
+
+ /* Sidebar specific */
+ --sidebar: var(--forest);
+ --sidebar-foreground: #ffffff;
+ --sidebar-accent: rgba(255, 255, 255, 0.12);
+ --sidebar-accent-foreground: #ffffff;
+ --sidebar-border: rgba(255, 255, 255, 0.08);
+}
+
+html,
+body,
+#root {
+ height: 100%;
+ background: var(--paper);
+}
+
+.f-display {
+ font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.f-body {
+ font-family: "Outfit", sans-serif;
+}
+
+.f-mono {
+ font-family: "Inconsolata", monospace;
+}
+
+body::before {
+ content: "";
+ position: fixed;
+ inset: 0;
+ pointer-events: none;
+ z-index: 9999;
+ opacity: 0.025;
+ background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+ background-size: 200px;
+}
+
+::-webkit-scrollbar {
+ width: 6px;
+}
+
+::-webkit-scrollbar-track {
+ background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+ background: var(--line);
+ border-radius: 3px;
+}
+
+@keyframes fadeUp {
+ from {
+  opacity: 0;
+  transform: translateY(16px);
+ }
+ to {
+  opacity: 1;
+  transform: translateY(0);
+ }
+}
+
+@keyframes fadeIn {
+ from {
+  opacity: 0;
+ }
+ to {
+  opacity: 1;
+ }
+}
+
+@keyframes shimmer {
+ from {
+  background-position: -400px 0;
+ }
+ to {
+  background-position: 400px 0;
+ }
+}
+
+@keyframes slideIn {
+ from {
+  opacity: 0;
+  transform: translateX(-12px);
+ }
+ to {
+  opacity: 1;
+  transform: translateX(0);
+ }
+}
+
+.anim-fade-up {
+ animation: fadeUp 0.4s ease both;
+}
+
+.anim-fade-in {
+ animation: fadeIn 0.3s ease both;
+}
+
+.anim-slide-in {
+ animation: slideIn 0.3s ease both;
+}
+
+.hover-lift {
+ transition:
+  transform 0.2s ease,
+  box-shadow 0.2s ease;
+ cursor: pointer;
+}
+
+.hover-lift:hover {
+ transform: translateY(-2px);
+ box-shadow: var(--shadow-lg);
+}
+
+.btn {
+ font-family: "Outfit", sans-serif;
+ font-size: 13px;
+ font-weight: 600;
+ border: none;
+ cursor: pointer;
+ border-radius: 50px;
+ padding: 10px 22px;
+ transition: all 0.2s ease;
+ letter-spacing: 0.3px;
+ display: inline-flex;
+ align-items: center;
+ gap: 7px;
+}
+
+.btn:disabled {
+ opacity: 0.5;
+ cursor: not-allowed;
+}
+
+.btn-primary {
+ background: var(--forest);
+ color: var(--white);
+}
+
+.btn-primary:hover:not(:disabled) {
+ background: var(--forest2);
+ transform: translateY(-1px);
+ box-shadow: 0 6px 20px rgba(27, 77, 53, 0.35);
+}
+
+.btn-sienna {
+ background: var(--sienna);
+ color: var(--white);
+}
+
+.btn-sienna:hover:not(:disabled) {
+ background: var(--sienna2);
+ transform: translateY(-1px);
+ box-shadow: 0 6px 20px rgba(196, 98, 45, 0.35);
+}
+
+.btn-ghost {
+ background: transparent;
+ color: var(--ink2);
+ border: 1.5px solid var(--line);
+}
+
+.btn-ghost:hover:not(:disabled) {
+ background: var(--paper2);
+}
+
+.btn-amber {
+ background: var(--amber);
+ color: var(--ink);
+}
+
+.btn-amber:hover:not(:disabled) {
+ filter: brightness(1.05);
+ transform: translateY(-1px);
+}
+
+.tag {
+ font-family: "Inconsolata", monospace;
+ font-size: 10px;
+ font-weight: 600;
+ padding: 3px 9px;
+ border-radius: 20px;
+ letter-spacing: 0.5px;
+}
+
+.tag-green {
+ background: var(--mint);
+ color: var(--forest);
+}
+
+.tag-orange {
+ background: #fdebd6;
+ color: var(--sienna);
+}
+
+.tag-blue {
+ background: #dbeafe;
+ color: var(--blue);
+}
+
+.tag-amber {
+ background: #fef3c7;
+ color: #92400e;
+}
+
+.tag-muted {
+ background: var(--paper2);
+ color: var(--muted);
+}
+
+.card {
+ background: var(--white);
+ border-radius: var(--radius);
+ border: 1px solid var(--line);
+ padding: 24px;
+ box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.input {
+ font-family: "Outfit", sans-serif;
+ font-size: 13px;
+ border: 1.5px solid var(--line);
+ border-radius: 10px;
+ padding: 9px 14px;
+ background: var(--white);
+ color: var(--ink);
+ outline: none;
+ width: 100%;
+ transition: border-color 0.2s;
+}
+
+.input:focus {
+ border-color: var(--leaf);
+}
+
+.select {
+ font-family: "Outfit", sans-serif;
+ font-size: 13px;
+ border: 1.5px solid var(--line);
+ border-radius: 10px;
+ padding: 9px 14px;
+ background: var(--white);
+ color: var(--ink);
+ outline: none;
+ cursor: pointer;
+ appearance: none;
+ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A8070' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+ background-repeat: no-repeat;
+ background-position: right 12px center;
+ padding-right: 34px;
+ transition: border-color 0.2s;
+}
+
+.select:focus {
+ border-color: var(--leaf);
+}
+
+.skeleton {
+ background: linear-gradient(
+  90deg,
+  var(--paper2) 25%,
+  var(--paper) 50%,
+  var(--paper2) 75%
+ );
+ background-size: 400px 100%;
+ animation: shimmer 1.4s infinite;
+ border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+ :root {
+  --sidebar-w: 0px;
+ }
+}
+
+/* Sidebar Specific Styles */
+.bg-sidebar {
+  background-color: var(--sidebar) !important;
+}
+
+.text-sidebar-foreground {
+  color: var(--sidebar-foreground) !important;
+}
+
+.bg-sidebar-accent {
+  background-color: var(--sidebar-accent) !important;
+}
+
+.text-sidebar-accent-foreground {
+  color: var(--sidebar-accent-foreground) !important;
+}
+
+.border-sidebar-border, .border-r {
+  border-color: var(--sidebar-border) !important;
+}
+
+/* Tailwind Utilities Layer */
+@layer utilities {
+ .text-balance {
+  text-wrap: balance;
+ }
+
+ .f-display {
+  font-family: "Cormorant Garamond", Georgia, serif;
+ }
+
+ .f-body {
+  font-family: "Outfit", sans-serif;
+ }
+
+ .f-mono {
+  font-family: "Inconsolata", monospace;
+ }
+}
